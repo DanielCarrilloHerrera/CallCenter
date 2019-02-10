@@ -2,6 +2,8 @@ package model;
 
 import java.time.Instant;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 import util.TipoEmpleado;
 
 public abstract class Empleado {
@@ -9,10 +11,12 @@ public abstract class Empleado {
 	private final TipoEmpleado tipoEmpleado;
 	private boolean ocupado;
 	private ILlamada llamadaAsignada;
+	private String uniqueId;
 	
 	public Empleado(TipoEmpleado tipoEmpleado) {
 		super();
 		this.tipoEmpleado = tipoEmpleado;
+		this.uniqueId = RandomStringUtils.random(10, true, true);
 		this.ocupado = false;
 	}
 
@@ -40,9 +44,11 @@ public abstract class Empleado {
 		this.llamadaAsignada = llamadaAsignada;
 		this.llamadaAsignada.setTimeLlamada(Instant.now());;
 	}
-
-		
 	
+	public String getUniqueId() {
+		return this.uniqueId;
+	}
+		
 }
 	
 	

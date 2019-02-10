@@ -3,8 +3,8 @@ package services.impl;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import javax.inject.Inject;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 import javax.inject.Singleton;
 import model.Empleado;
 import model.ILlamada;
@@ -25,41 +25,25 @@ public class DistpacherImpl implements IDistpacher {
 	}
 
 	// --
-	//@Inject
 	public synchronized boolean dispatchCall(ILlamada llamada, int numeroIntento) {
 
-		Optional<Empleado> operarioAOcupar = empleados.stream()
-				.filter(empleado -> ((empleado.getTipoEmpleado() == TipoEmpleado.OPERADOR) && (!empleado.isOcupado())))
-				.findFirst();
+		Supplier<Stream<Empleado>> streamEmpleados = () -> empleados.stream();
+		
+		Empleado empleadoAOcupar = 
+				streamEmpleados.get()
+					.filter(empleado -> ((empleado.getTipoEmpleado() == TipoEmpleado.OPERADOR) && (!empleado.isOcupado()))).findFirst()
+					.orElse(streamEmpleados.get()
+						.filter(empleado -> ((empleado.getTipoEmpleado() == TipoEmpleado.SUPERVISOR) && (!empleado.isOcupado()))).findFirst()
+					.orElse(streamEmpleados.get()
+						.filter(empleado -> ((empleado.getTipoEmpleado() == TipoEmpleado.DIRECTOR) && (!empleado.isOcupado()))).findFirst().orElse(null)));
 
-		if (operarioAOcupar.isPresent()) {
-			operarioAOcupar.get().setOcupado(true);
-			operarioAOcupar.get().setLlamadaAsignada(llamada);
-			System.out.println("Operario asignado.");
+		if (empleadoAOcupar != null) {
+			empleadoAOcupar.setOcupado(true);
+			empleadoAOcupar.setLlamadaAsignada(llamada);
+			System.out.println("Llamada #" + llamada.getUniqueId() + " asignada al "+ empleadoAOcupar.getTipoEmpleado().toString() +" con id " + empleadoAOcupar.getUniqueId());
 			return true;
 		}
 
-		Optional<Empleado> supervisorAOcupar = empleados.stream().filter(
-				empleado -> ((empleado.getTipoEmpleado() == TipoEmpleado.SUPERVISOR) && (!empleado.isOcupado())))
-				.findFirst();
-
-		if (supervisorAOcupar.isPresent()) {
-			supervisorAOcupar.get().setOcupado(true);
-			supervisorAOcupar.get().setLlamadaAsignada(llamada);
-			System.out.println("Supervisor asignado.");
-			return true;
-		}
-
-		Optional<Empleado> directorAOcupar = empleados.stream()
-				.filter(empleado -> ((empleado.getTipoEmpleado() == TipoEmpleado.DIRECTOR) && (!empleado.isOcupado())))
-				.findFirst();
-
-		if (directorAOcupar.isPresent()) {
-			directorAOcupar.get().setOcupado(true);
-			directorAOcupar.get().setLlamadaAsignada(llamada);
-			System.out.println("Director asignado.");
-			return true;
-		}
 
 		try {
 			Thread.sleep(1000);
@@ -71,7 +55,7 @@ public class DistpacherImpl implements IDistpacher {
 			revisarEmpleadosDesocupados();
 			return this.dispatchCall(llamada, ++numeroIntento);
 		}else{
-			System.out.println("No se pudo asignar la llamada a un empleado. Intente de nuevo.");
+			System.out.println("No se pudo asignar la llamada #"+ llamada.getUniqueId() + " a un empleado. Intente de nuevo.");
 			return true;
 		}
 		
@@ -79,7 +63,7 @@ public class DistpacherImpl implements IDistpacher {
 
 	// --
 	@Override
-	public void revisarEmpleadosDesocupados() {
+	public synchronized void revisarEmpleadosDesocupados() {
 		this.empleados.forEach(empleado -> {
 			if (empleado.isOcupado()) {
 				long timeCreacionLlamadaEnSegundos = empleado.getLlamadaAsignada().getTimeLlamada().getEpochSecond();
@@ -95,7 +79,7 @@ public class DistpacherImpl implements IDistpacher {
 	}
 
 	// --
-	public void agregarEmpleados(TipoEmpleado tipoEmpleado, int cantidad) {
+	public void contratarEmpleados(TipoEmpleado tipoEmpleado, int cantidad) {
 		int contador = 0;
 		switch (tipoEmpleado) {
 
@@ -121,6 +105,11 @@ public class DistpacherImpl implements IDistpacher {
 			break;
 		}
 
+	}
+
+	@Override
+	public void despedirATodosLosEmpleados() {
+		this.empleados.clear();
 	}
 
 }
