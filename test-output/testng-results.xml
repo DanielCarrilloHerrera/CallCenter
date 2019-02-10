@@ -1,57 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="10" passed="10">
+<testng-results skipped="0" failed="0" ignored="0" total="15" passed="15">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="319" started-at="2019-02-08T05:27:11Z" finished-at="2019-02-08T05:27:11Z">
+  <suite name="Default suite" duration-ms="11288" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:57Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="319" started-at="2019-02-08T05:27:11Z" finished-at="2019-02-08T05:27:11Z">
+    <test name="Default test" duration-ms="11288" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:57Z">
       <class name="LlamadasTest">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:LlamadasTest@457e2f02]" name="setUp" is-config="true" duration-ms="264" started-at="2019-02-08T05:27:11Z" finished-at="2019-02-08T05:27:11Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:LlamadasTest@39aeed2f]" name="setUp" is-config="true" duration-ms="172" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas()[pri:0, instance:LlamadasTest@457e2f02]" name="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas" duration-ms="10" started-at="2019-02-08T05:27:11Z" finished-at="2019-02-08T05:27:11Z">
+        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes()[pri:0, instance:LlamadasTest@39aeed2f]" name="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes" duration-ms="69" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:46Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarDiezLlamadas -->
-        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas()[pri:0, instance:LlamadasTest@457e2f02]" name="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas" duration-ms="20" started-at="2019-02-08T05:27:11Z" finished-at="2019-02-08T05:27:11Z">
+        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes -->
+        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes()[pri:0, instance:LlamadasTest@39aeed2f]" name="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes" duration-ms="69" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:46Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarDiezLlamadas -->
-        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas()[pri:0, instance:LlamadasTest@457e2f02]" name="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas" duration-ms="24" started-at="2019-02-08T05:27:11Z" finished-at="2019-02-08T05:27:11Z">
+        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes -->
+        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes()[pri:0, instance:LlamadasTest@39aeed2f]" name="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes" duration-ms="11084" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:57Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarDiezLlamadas -->
-        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas()[pri:0, instance:LlamadasTest@457e2f02]" name="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas" duration-ms="26" started-at="2019-02-08T05:27:11Z" finished-at="2019-02-08T05:27:11Z">
+        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes -->
+        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes()[pri:0, instance:LlamadasTest@39aeed2f]" name="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes" duration-ms="10084" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:56Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarDiezLlamadas -->
-        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas()[pri:0, instance:LlamadasTest@457e2f02]" name="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas" duration-ms="18" started-at="2019-02-08T05:27:11Z" finished-at="2019-02-08T05:27:11Z">
+        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes -->
+        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes()[pri:0, instance:LlamadasTest@39aeed2f]" name="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes" duration-ms="69" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:46Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarDiezLlamadas -->
-        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas()[pri:0, instance:LlamadasTest@457e2f02]" name="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas" duration-ms="10" started-at="2019-02-08T05:27:11Z" finished-at="2019-02-08T05:27:11Z">
+        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes -->
+        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes()[pri:0, instance:LlamadasTest@39aeed2f]" name="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes" duration-ms="69" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:46Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarDiezLlamadas -->
-        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas()[pri:0, instance:LlamadasTest@457e2f02]" name="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas" duration-ms="9" started-at="2019-02-08T05:27:11Z" finished-at="2019-02-08T05:27:11Z">
+        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes -->
+        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes()[pri:0, instance:LlamadasTest@39aeed2f]" name="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes" duration-ms="4072" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:50Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarDiezLlamadas -->
-        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas()[pri:0, instance:LlamadasTest@457e2f02]" name="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas" duration-ms="12" started-at="2019-02-08T05:27:11Z" finished-at="2019-02-08T05:27:11Z">
+        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes -->
+        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes()[pri:0, instance:LlamadasTest@39aeed2f]" name="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes" duration-ms="9083" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:55Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarDiezLlamadas -->
-        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas()[pri:0, instance:LlamadasTest@457e2f02]" name="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas" duration-ms="9" started-at="2019-02-08T05:27:11Z" finished-at="2019-02-08T05:27:11Z">
+        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes -->
+        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes()[pri:0, instance:LlamadasTest@39aeed2f]" name="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes" duration-ms="10083" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:56Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarDiezLlamadas -->
-        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas()[pri:0, instance:LlamadasTest@457e2f02]" name="debeComprobarQueElDistpacherPuedeManejarDiezLlamadas" duration-ms="14" started-at="2019-02-08T05:27:11Z" finished-at="2019-02-08T05:27:11Z">
+        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes -->
+        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes()[pri:0, instance:LlamadasTest@39aeed2f]" name="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes" duration-ms="9082" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:55Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarDiezLlamadas -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:LlamadasTest@457e2f02]" name="tearDown" is-config="true" duration-ms="1" started-at="2019-02-08T05:27:11Z" finished-at="2019-02-08T05:27:11Z">
+        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes -->
+        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes()[pri:0, instance:LlamadasTest@39aeed2f]" name="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes" duration-ms="68" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes -->
+        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes()[pri:0, instance:LlamadasTest@39aeed2f]" name="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes" duration-ms="68" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes -->
+        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes()[pri:0, instance:LlamadasTest@39aeed2f]" name="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes" duration-ms="68" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes -->
+        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes()[pri:0, instance:LlamadasTest@39aeed2f]" name="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes" duration-ms="6073" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes -->
+        <test-method status="PASS" signature="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes()[pri:0, instance:LlamadasTest@39aeed2f]" name="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes" duration-ms="9081" started-at="2019-02-10T00:25:46Z" finished-at="2019-02-10T00:25:55Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:LlamadasTest@39aeed2f]" name="tearDown" is-config="true" duration-ms="3" started-at="2019-02-10T00:25:57Z" finished-at="2019-02-10T00:25:57Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
