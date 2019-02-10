@@ -21,18 +21,21 @@ public class FactoryEmpleadosImpl extends FactoryEmpleados {
 		case OPERADOR:
 			while(contador < cantidad){
 				retorno.add(new Operador());
+				contador++;
 			}
 		return retorno;	
 		
 		case SUPERVISOR:
 			while(contador < cantidad){
 				retorno.add(new Supervisor());
+				contador++;
 			}
 		return retorno;
 
 		case DIRECTOR:
 			while(contador < cantidad){
 				retorno.add(new Director());
+				contador++;
 			}
 		return retorno;
 

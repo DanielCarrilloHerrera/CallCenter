@@ -2,7 +2,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -38,7 +37,7 @@ public class LlamadasTest {
 	public void pruebaUnoDebeComprobarQueElDistpacherPuedeManejarDiezLlamadas(){
 		ILlamada llamada = injector.getInstance(ILlamada.class);
 		llamada.setDuracionLlamada(generadorAleatorio.getDuracionAleatoria());
-		//Assert.assertTrue(distpacher.dispatchCall(llamada, 0));
+		Assert.assertTrue(distpacher.dispatchCall(llamada, 0));
 	}
 	
 	//--
@@ -46,7 +45,7 @@ public class LlamadasTest {
 	public void pruebaDosComprobarQueElDistpacherPuedeManejarMasDeDiezLlamadas(){
 		ILlamada llamada = injector.getInstance(ILlamada.class);
 		llamada.setDuracionLlamada(generadorAleatorio.getDuracionAleatoria());
-		//Assert.assertTrue(distpacher.dispatchCall(llamada, 0));
+		Assert.assertTrue(distpacher.dispatchCall(llamada, 0));
 	}
 	
 	@AfterClass
