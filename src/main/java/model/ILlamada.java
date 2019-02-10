@@ -8,4 +8,5 @@ public interface ILlamada {
 	public int getDuracionLlamada();
 	public void setTimeLlamada(Instant timeLlamada);
 	public Instant getTimeLlamada();
+	public String getUniqueId();
 }

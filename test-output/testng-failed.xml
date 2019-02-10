@@ -5,9 +5,11 @@
     <classes>
       <class name="LlamadasTest">
         <methods>
-          <include name="debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes"/>
           <include name="tearDown"/>
+          <include name="cleanDistpacher"/>
+          <include name="pruebaUnoDebeComprobarQueElDistpacherPuedeManejarDiezLlamadas"/>
           <include name="setUp"/>
+          <include name="pruebaDosComprobarQueElDistpacherPuedeManejarMasDeDiezLlamadas"/>
         </methods>
       </class> <!-- LlamadasTest -->
     </classes>

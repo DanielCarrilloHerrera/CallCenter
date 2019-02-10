@@ -1,6 +1,8 @@
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -18,23 +20,34 @@ public class LlamadasTest {
 	
 	@BeforeClass
 	public void setUp() throws Exception{
-		injector = Guice.createInjector(new AppInjector());
-		distpacher = injector.getInstance(IDistpacher.class);
+		injector = Guice.createInjector(new AppInjector());;
 		generadorAleatorio = injector.getInstance(GeneradorDuracionAleatorio.class);
-		distpacher.agregarEmpleados(TipoEmpleado.OPERADOR, 3);
-		distpacher.agregarEmpleados(TipoEmpleado.SUPERVISOR, 2);
-		distpacher.agregarEmpleados(TipoEmpleado.DIRECTOR, 2);
+		distpacher = injector.getInstance(IDistpacher.class);
+	}
+
+	@BeforeMethod
+	public void cleanDistpacher(){
+		distpacher.despedirATodosLosEmpleados();
+		distpacher.contratarEmpleados(TipoEmpleado.OPERADOR, 4);
+		distpacher.contratarEmpleados(TipoEmpleado.SUPERVISOR, 4);
+		distpacher.contratarEmpleados(TipoEmpleado.DIRECTOR, 2);
 	}
 	
-
-	@Test(threadPoolSize = 15, invocationCount = 15,  timeOut = 30000)
-	public void debeComprobarQueElDistpacherPuedeManejarTodasLasLlamadasEntrantes(){
-		//System.out.print("Ejecutando llamada a las " + LocalTime.now() + "\n" );
+	//--
+	@Test(threadPoolSize = 10, invocationCount = 10, priority = 1)
+	public void pruebaUnoDebeComprobarQueElDistpacherPuedeManejarDiezLlamadas(){
 		ILlamada llamada = injector.getInstance(ILlamada.class);
 		llamada.setDuracionLlamada(generadorAleatorio.getDuracionAleatoria());
 		Assert.assertTrue(distpacher.dispatchCall(llamada, 0));
 	}
 	
+	//--
+	@Test(threadPoolSize = 30, invocationCount = 30, priority = 2)
+	public void pruebaDosComprobarQueElDistpacherPuedeManejarMasDeDiezLlamadas(){
+		ILlamada llamada = injector.getInstance(ILlamada.class);
+		llamada.setDuracionLlamada(generadorAleatorio.getDuracionAleatoria());
+		Assert.assertTrue(distpacher.dispatchCall(llamada, 0));
+	}
 	
 	@AfterClass
 	public void tearDown() throws Exception {
