@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
+
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import model.Empleado;
 import model.ILlamada;
 import model.impl.Director;
 import model.impl.Operador;
 import model.impl.Supervisor;
+import services.FactoryEmpleados;
 import services.IDistpacher;
 import util.TipoEmpleado;
 
@@ -18,6 +21,8 @@ import util.TipoEmpleado;
 public class DistpacherImpl implements IDistpacher {
 
 	private List<Empleado> empleados;
+	@Inject
+	private FactoryEmpleados factoryEmpleados;
 
 	public DistpacherImpl() {
 		super();
@@ -80,31 +85,7 @@ public class DistpacherImpl implements IDistpacher {
 
 	// --
 	public void contratarEmpleados(TipoEmpleado tipoEmpleado, int cantidad) {
-		int contador = 0;
-		switch (tipoEmpleado) {
-
-		case OPERADOR:
-			while (contador < cantidad) {
-				this.empleados.add(new Operador());
-				contador++;
-			}
-			break;
-
-		case SUPERVISOR:
-			while (contador < cantidad) {
-				this.empleados.add(new Supervisor());
-				contador++;
-			}
-			break;
-
-		case DIRECTOR:
-			while (contador < cantidad) {
-				this.empleados.add(new Director());
-				contador++;
-			}
-			break;
-		}
-
+		this.empleados.addAll(factoryEmpleados.crearEmpleados(tipoEmpleado, cantidad));
 	}
 
 	@Override
