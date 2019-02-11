@@ -8,6 +8,9 @@ import java.util.stream.Stream;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import model.Empleado;
 import model.ILlamada;
 import model.impl.Director;
@@ -15,12 +18,14 @@ import model.impl.Operador;
 import model.impl.Supervisor;
 import services.FactoryEmpleados;
 import services.IDistpacher;
+import util.CallCenterLogger;
 import util.TipoEmpleado;
 
 @Singleton
 public class DistpacherImpl implements IDistpacher {
 
 	private List<Empleado> empleados;
+	
 	@Inject
 	private FactoryEmpleados factoryEmpleados;
 
@@ -45,7 +50,7 @@ public class DistpacherImpl implements IDistpacher {
 		if (empleadoAOcupar != null) {
 			empleadoAOcupar.setOcupado(true);
 			empleadoAOcupar.setLlamadaAsignada(llamada);
-			System.out.println("Llamada #" + llamada.getUniqueId() + " asignada al "+ empleadoAOcupar.getTipoEmpleado().toString() +" con id " + empleadoAOcupar.getUniqueId());
+			CallCenterLogger.getLogger().info("Llamada #" + llamada.getUniqueId() + " asignada al "+ empleadoAOcupar.getTipoEmpleado().toString() +" con id #" + empleadoAOcupar.getUniqueId());
 			return true;
 		}
 
@@ -54,13 +59,14 @@ public class DistpacherImpl implements IDistpacher {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			CallCenterLogger.getLogger().error(e.getMessage());
 		}
-		System.out.println("Reintentando asignación a empleado no ocupado...");
+		CallCenterLogger.getLogger().info("Reintentando asignación de llamada #"+llamada.getUniqueId() +" a empleado no ocupado...");
 		if(numeroIntento < 3){
 			revisarEmpleadosDesocupados();
 			return this.dispatchCall(llamada, ++numeroIntento);
 		}else{
-			System.out.println("No se pudo asignar la llamada #"+ llamada.getUniqueId() + " a un empleado. Intente de nuevo.");
+			CallCenterLogger.getLogger().info("No se pudo asignar la llamada #"+ llamada.getUniqueId() + " a un empleado. Reintentar mas tarde.");
 			return true;
 		}
 		
@@ -68,7 +74,7 @@ public class DistpacherImpl implements IDistpacher {
 
 	// --
 	@Override
-	public void revisarEmpleadosDesocupados() {
+	public synchronized void revisarEmpleadosDesocupados() {
 		this.empleados.forEach(empleado -> {
 			if (empleado.isOcupado()) {
 				long timeCreacionLlamadaEnSegundos = empleado.getLlamadaAsignada().getTimeLlamada().getEpochSecond();
@@ -86,8 +92,34 @@ public class DistpacherImpl implements IDistpacher {
 	// --
 	public void contratarEmpleados(TipoEmpleado tipoEmpleado, int cantidad) {
 		this.empleados.addAll(factoryEmpleados.crearEmpleados(tipoEmpleado, cantidad));
+		/*int contador = 0;
+		switch (tipoEmpleado) {
+
+		case OPERADOR:
+			while (contador < cantidad) {
+				this.empleados.add(new Operador());
+				contador++;
+			}
+			break;
+
+		case SUPERVISOR:
+			while (contador < cantidad) {
+				this.empleados.add(new Supervisor());
+				contador++;
+			}
+			break;
+
+		case DIRECTOR:
+			while (contador < cantidad) {
+				this.empleados.add(new Director());
+				contador++;
+			}
+			break;
+		}*/
+
 	}
 
+	//--
 	@Override
 	public void despedirATodosLosEmpleados() {
 		this.empleados.clear();
