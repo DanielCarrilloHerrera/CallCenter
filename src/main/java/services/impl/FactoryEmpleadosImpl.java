@@ -10,8 +10,21 @@ import model.impl.Supervisor;
 import services.FactoryEmpleados;
 import util.TipoEmpleado;
 
+/**
+ * Clase encargada de especificar la estructura de una fábrica de empleados (Patrón de diseño Factory). 
+ *
+ * @see services.FactoryEmpleados
+ * @author Daniel Jose Carrillo Herrera
+ */
 public class FactoryEmpleadosImpl extends FactoryEmpleados {
 
+	/**
+	 * Metodo para crear empleados del tipo especificado.
+	 * @param tipoEmpleado es un valor de la enumeración TipoEmpleado.
+	 * @param cantidad es un valor que define la cantidad de empleados a crear.
+	 * @see util.TipoEmpleado
+	 * @return una lista con los empleados creados.
+	 */
 	@Override
 	public List<Empleado> crearEmpleados(TipoEmpleado tipoEmpleado, int cantidad) {
 		

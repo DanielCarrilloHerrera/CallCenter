@@ -9,18 +9,19 @@ import java.util.stream.Stream;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import model.Empleado;
 import model.ILlamada;
-import model.impl.Director;
-import model.impl.Operador;
-import model.impl.Supervisor;
 import services.FactoryEmpleados;
 import services.IDistpacher;
 import util.CallCenterLogger;
 import util.TipoEmpleado;
 
+/**
+ * Esta es una clase que implementa la interfaz IDistpacher para crear dispachers
+ *
+ * @see services.IDistpacher
+ * @author Daniel Jose Carrillo Herrera
+ */
 @Singleton
 public class DistpacherImpl implements IDistpacher {
 
@@ -29,12 +30,20 @@ public class DistpacherImpl implements IDistpacher {
 	@Inject
 	private FactoryEmpleados factoryEmpleados;
 
+	/**
+	 * Constructor encargado de definir la implementación de la interfaz IDistpacher
+	 */
 	public DistpacherImpl() {
 		super();
 		this.empleados = new ArrayList<Empleado>();
 	}
 
-	// --
+	/**
+	 * Metodo distpatchCall. Para asignar la llamada a un empleado no ocupado
+	 * @param llamada es una implementación de la interfaz ILlamada
+	 * @param numeroIntento es un valor que determina el numero de intento de asignación de la llamada. Máximo 3.
+	 * @return un boolean confirmando si la llamada se asigno a un empleado o no. 
+	 */
 	public synchronized boolean dispatchCall(ILlamada llamada, int numeroIntento) {
 
 		Supplier<Stream<Empleado>> streamEmpleados = () -> empleados.stream();
@@ -72,7 +81,9 @@ public class DistpacherImpl implements IDistpacher {
 		
 	}
 
-	// --
+	/**
+	 * Metodo revisarEmpleadosDesocupados. Para revisar que empleados no estan atendiendo una llamada
+	 */
 	@Override
 	public synchronized void revisarEmpleadosDesocupados() {
 		this.empleados.forEach(empleado -> {
@@ -89,37 +100,18 @@ public class DistpacherImpl implements IDistpacher {
 
 	}
 
-	// --
+	/**
+	 * Metodo contratarEmpleado. Para asignar la llamada a un empleado no ocupado
+	 * @param tipoEmpleado es un valor de la enumeración TipoEmpleado. Puede ser OPERADOR, SUPERVISOR o DIRECTOR
+	 * @param cantidad determina la cantidad de empleados de tipo especificado a crear.
+	 */
 	public void contratarEmpleados(TipoEmpleado tipoEmpleado, int cantidad) {
 		this.empleados.addAll(factoryEmpleados.crearEmpleados(tipoEmpleado, cantidad));
-		/*int contador = 0;
-		switch (tipoEmpleado) {
-
-		case OPERADOR:
-			while (contador < cantidad) {
-				this.empleados.add(new Operador());
-				contador++;
-			}
-			break;
-
-		case SUPERVISOR:
-			while (contador < cantidad) {
-				this.empleados.add(new Supervisor());
-				contador++;
-			}
-			break;
-
-		case DIRECTOR:
-			while (contador < cantidad) {
-				this.empleados.add(new Director());
-				contador++;
-			}
-			break;
-		}*/
-
 	}
 
-	//--
+	/**
+	 * Metodo despedirATodosLosEmpleados. Para limpiar la coleccion de empleados existentes
+	 */
 	@Override
 	public void despedirATodosLosEmpleados() {
 		this.empleados.clear();
